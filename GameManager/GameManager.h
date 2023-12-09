@@ -10,8 +10,8 @@ class GameManager{
     //Pantalla pantalla
     //Controler controler
 
-    void update(float deltaTime){}
-    void init(){}
+    void update(float deltaTime);
+    void init();
 
     public:
         int static points;
