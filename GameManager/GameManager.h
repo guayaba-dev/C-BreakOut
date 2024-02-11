@@ -1,5 +1,5 @@
 #pragma once
-#include "../Rederizador/Renderizador.h"
+#include "../Renderizador/Renderizador.h"
 #include "../Controler/Controler.h"
 
 class GameManager{

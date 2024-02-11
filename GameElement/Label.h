@@ -13,6 +13,8 @@ public:
     Label();
     Label(std::string message);
 
+    std::string getDrawable();
+
 };
 
 

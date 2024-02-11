@@ -3,7 +3,7 @@
 #include <vector>
 
 
-class Pantalla
+class Pantalla : public GameElement<std:::vector<GameElement>>
 {
 
 public:
@@ -11,6 +11,8 @@ public:
     std::vector<GameElement> elements{};
 
     Pantalla();
+
+    std::vector getDrawable() override;
 
 };
 
