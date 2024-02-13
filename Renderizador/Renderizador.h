@@ -5,6 +5,11 @@
 
 class Renderizador
 {
+    std::vector<char> currentBuffer;
+    std::vector<char> nextBuffer;
+
+    Vector size;
+
     public: 
         Renderizador()=default;
         void draw(std::vector<GameElement> elements, Vector position);
