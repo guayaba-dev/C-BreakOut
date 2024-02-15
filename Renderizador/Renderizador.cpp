@@ -51,7 +51,10 @@ void Renderizador::draw(Sprite sprite, Vector position){
 
         if (!((bufferPosition - spriteCursor.x - position.x)/size.x < this->size.x)){
             return;
-        }   
+        }  
+
+        this->nextBuffer.assign(bufferPosition, chara);
+
     }
 
 };

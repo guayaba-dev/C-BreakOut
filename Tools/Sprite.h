@@ -8,4 +8,5 @@ struct Sprite
     Vector size = Vector();
     Sprite(){};
     Sprite(float x, float y);
+    Sprite(float x, float y, std::string image);
 };

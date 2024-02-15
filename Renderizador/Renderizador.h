@@ -11,7 +11,7 @@ class Renderizador
     Vector size;
 
     public: 
-        Renderizador()=default;
+        Renderizador(Vector size);
         void draw(std::vector<GameElement> elements, Vector position);
         void draw(Sprite sprite, Vector position);
         void draw(std::string message, Vector position);  

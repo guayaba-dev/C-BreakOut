@@ -4,8 +4,10 @@
 
 class GameElement
 {
-    int static id;
-    Vector position;
+
+    protected:    
+        int static id;
+        Vector position;
 
     public:
         
@@ -13,8 +15,8 @@ class GameElement
         GameElement(Vector position);
         virtual void update();
         virtual void destroy();
-        virtual Vector getPosition();
-        virtual void setPosition(Vector position);
+        Vector getPosition(){return this->position;};
+        void setPosition(Vector position){this->position = position;};
         template <class T >
         T getDrawable();
         int getDrawable();
