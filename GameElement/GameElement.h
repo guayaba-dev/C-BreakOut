@@ -11,15 +11,15 @@ class GameElement
 
     public:
         
-        GameElement();
-        GameElement(Vector position);
-        virtual void update();
-        virtual void destroy();
+        //GameElement();
+        //GameElement(Vector position);
+        //virtual void update();
+        //virtual void destroy();
         Vector getPosition(){return this->position;};
         void setPosition(Vector position){this->position = position;};
         template <class T >
         T getDrawable();
-        int getDrawable();
+        int getDrawable(){return 0;};
         };
 
 

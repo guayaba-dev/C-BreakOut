@@ -10,9 +10,9 @@
 				"-std=c++20",
 				"${workspaceFolder}\\*.cpp",
         		"${workspaceFolder}/Tools/*.cpp",
-        		"${workspaceFolder}/Controler/*.cpp",
+        	//	"${workspaceFolder}/Controler/*.cpp",
         		"${workspaceFolder}/GameElement/*.cpp",
-        		"${workspaceFolder}/GameManager/*.cpp",
+        	//	"${workspaceFolder}/GameManager/*.cpp",
 				"${workspaceFolder}/Renderizador/*.cpp",
 				"-o",
 				"${fileDirname}\\main.exe"
