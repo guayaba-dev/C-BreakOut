@@ -1,22 +1,25 @@
 #include <iostream>
-#include <vector>
+#include <algorithm> 
 #include "Renderizador.h"
 
 Renderizador::Renderizador(Vector size){
 
     this->size = size;
+    nextBuffer.resize(size.x * size.y);
+    std::fill(nextBuffer.begin(), nextBuffer.end(), ' ');
 
 }
 
-void Renderizador::draw(std::vector<GameElement> elements, Vector position){
+void Renderizador::draw(std::vector<GameElement*> &elements, Vector position){
 
-    for(auto element : elements){ 
+    for(auto& element : elements){ 
 
-        Vector elementPosition = element.getPosition();
+        Vector elementPosition = element->getPosition();
         elementPosition.x += position.x;
         elementPosition.y += position.y;
-
-        this->draw(element.getDrawable(), elementPosition);
+ 
+        element->example(this);
+        //this->draw(*elementgetDrawable(), elementPosition);
 
     }
     
@@ -24,10 +27,18 @@ void Renderizador::draw(std::vector<GameElement> elements, Vector position){
     nextBuffer.clear();
     currentBuffer = swapAux;
 
-    for(int i; i < currentBuffer.size(); i++){
+    for(int i{}; i < currentBuffer.size(); i++){
 
-        const char* nextCharacter = (i != size.x)? currentBuffer.at(i) + "" : currentBuffer.at(i) + "\n";
-        std::cout << nextCharacter;
+        if(((i+1) % (int)size.x) != 0 ){
+
+
+            std::cout << currentBuffer.at(i);            
+        }
+        else{
+
+            std::cout << currentBuffer.at(i) << "\n";
+
+        }
 
     }
     
@@ -37,11 +48,12 @@ void Renderizador::draw(std::vector<GameElement> elements, Vector position){
 
 void Renderizador::draw(std::string message, Vector position){
 
+
     int bufferPosition = (position.y * size.x) + position.x;
 
     for(char chara : message){
         
-        this->nextBuffer.assign(bufferPosition, chara);  
+        nextBuffer[bufferPosition] = chara;  
 
         if (!(bufferPosition - (position.y * size.x) < this->size.x)){
             return;
@@ -58,22 +70,40 @@ void Renderizador::draw(Sprite sprite, Vector position){
     int bufferPosition{};
     Vector spriteCursor{};
 
+
     for(char chara : sprite.image){
-                
+
+
         bufferPosition = ((position.y + spriteCursor.y) * size.x) + position.x + spriteCursor.x;
 
-        spriteCursor = (spriteCursor.x < sprite.size.x) ? Vector(spriteCursor.x+1, spriteCursor.y): Vector(spriteCursor.x, spriteCursor.y+1);
+        if(spriteCursor.x + 1 < sprite.size.x){
+            spriteCursor.x++;
+        }
+        else{
+            spriteCursor.y++;
+            spriteCursor.x = 0;
+        }
 
         if (!(bufferPosition - ((position.y + spriteCursor.y) * size.x) < this->size.x)){
             continue;
         }
 
         if (!((bufferPosition - spriteCursor.x - position.x)/size.x < this->size.x)){
+
             return;
         }  
 
-        this->nextBuffer.assign(bufferPosition, chara);
+
+        nextBuffer[bufferPosition] = chara;
 
     }
-
+     
 };
+
+
+    void GameElement::example(Renderizador* renderizador){
+
+        renderizador->draw(0, Vector(0,0));
+        std::cout << "soy un element" << "\n";
+
+    };

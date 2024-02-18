@@ -1,6 +1,10 @@
 #pragma once
+#include <iostream>
 #include <string>
-#include "../tools/Vector.h"
+#include "../Tools/Vector.h"
+#include "../Renderizador/Renderizador.h"
+
+class Renderizador;
 
 class GameElement
 {
@@ -20,7 +24,10 @@ class GameElement
         template <class T >
         T getDrawable();
         int getDrawable(){return 0;};
-        };
+        
+        virtual void example(Renderizador* renderizador);
+
+};
 
 
 

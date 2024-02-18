@@ -1,27 +1,27 @@
 #pragma once
 #include "../Renderizador/Renderizador.h"
-#include "../Controler/Controler.h"
 #include "../GameElement/Pantalla.h"
+#include "../Controler/Controler.h"
 
 class GameManager{
 
 
     float deltaTime{};
-    Renderizador renderizador{Renderizador(Vector(50,50))};
-    Pantalla pantalla{};
+    Renderizador renderizador{Renderizador(Vector(25,20))};
+    Pantalla pantalla = Pantalla();
     //Controler controler
 
     void update(float deltaTime);
-    void init(){
-        renderizador.draw(pantalla.elements, Vector(0,0));
-    };
 
     public:
         int static points;
         GameManager(){};
         GameManager(Pantalla pantalla){
-            this->pantalla = pantalla;
+           this->pantalla = pantalla; 
         }
+        void init(){
+            renderizador.draw(pantalla.elements, Vector(0,0));
+        };
 
 
 

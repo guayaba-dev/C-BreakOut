@@ -1,6 +1,5 @@
 #pragma once
 #include "GameElement.h"
-#include <iostream>
 
 
 class Label : public GameElement
@@ -18,6 +17,12 @@ public:
         this->position = position;
     };
     std::string getDrawable();
+
+    void example(Renderizador* renderizador) override {
+
+
+        renderizador->draw(message,position);
+    };
 
 };
 

@@ -8,11 +8,18 @@ class Pantalla : public GameElement
 
 public:
 
-    std::vector<GameElement> elements{};
+    Pantalla()=default;
 
-    Pantalla();
+    std::vector<GameElement*> elements{};
 
-    std::vector<GameElement> getDrawable();
+    std::vector<GameElement*> getDrawable();
+
+    void example(Renderizador* renderizador) override {
+
+        renderizador->draw(elements,position);
+
+
+    }    
 
 };
 
