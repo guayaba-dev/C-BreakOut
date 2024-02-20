@@ -1,15 +1,17 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <iostream>
 #include "../Tools/Sprite.h"
+#include "../Tools/FrameBuffer.h"
 #include "../GameElement/GameElement.h"
 
 class GameElement;
 
 class Renderizador
 {
-    std::vector<char> currentBuffer;
-    std::vector<char> nextBuffer;
+    FrameBuffer currentBuffer;
+    FrameBuffer nextBuffer;
 
     Vector size;
 

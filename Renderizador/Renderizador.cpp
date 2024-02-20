@@ -1,22 +1,19 @@
-#include <iostream>
-#include <algorithm> 
+
 #include "Renderizador.h"
 
 Renderizador::Renderizador(Vector size){
-
     this->size = size;
-    nextBuffer.resize(size.x * size.y);
-    std::fill(nextBuffer.begin(), nextBuffer.end(), ' ');
-
+    nextBuffer = FrameBuffer(size);
+    nextBuffer.clear();
 }
 
 void Renderizador::draw(){
 
-    std::vector<char> swapAux = nextBuffer;
+    FrameBuffer swapAux = nextBuffer;
     nextBuffer.clear();
     currentBuffer = swapAux;
 
-    for(int i{}; i < currentBuffer.size(); i++){
+    for(int i{}; i < size.x*size.y; i++){
 
         if(((i+1) % (int)size.x) != 0 ){
 
@@ -65,7 +62,7 @@ void Renderizador::draw(std::string message, Vector position){
             return;
         }
 
-          nextBuffer[bufferPosition] = chara;  
+          nextBuffer.draw(bufferPosition, chara);  
           bufferPosition++; 
     }
 
@@ -103,7 +100,7 @@ void Renderizador::draw(Sprite sprite, Vector position){
             continue;
         }
 
-        nextBuffer[bufferPosition] = chara;
+        nextBuffer.draw(bufferPosition, chara);
 
     }
      
