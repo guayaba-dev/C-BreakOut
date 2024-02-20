@@ -18,5 +18,5 @@ class Renderizador
         void draw(std::vector<GameElement*>&elements, Vector position);
         void draw(Sprite sprite, Vector position);
         void draw(std::string message, Vector position);  
-        void draw(int test, Vector position){};  
+        void draw(); 
         };

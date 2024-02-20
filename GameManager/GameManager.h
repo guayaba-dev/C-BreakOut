@@ -21,6 +21,7 @@ class GameManager{
         }
         void init(){
             renderizador.draw(pantalla.elements, Vector(0,0));
+            renderizador.draw();
         };
 
 
