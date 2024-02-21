@@ -14,10 +14,9 @@ class GameObject : public GameElement
         Sprite getDrawable();
         bool isColliding();
         void example(Renderizador* renderizador) override{
-
             renderizador->draw(sprite, position);
-
         };
+        virtual void update(double deltaTime) override{};
 
 };
 

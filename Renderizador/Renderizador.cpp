@@ -1,48 +1,51 @@
-
 #include "Renderizador.h"
 
-Renderizador::Renderizador(Vector size){
+Renderizador::Renderizador(Vector size, std::vector<GameElement*> elements){
     this->size = size;
+    this->elements = elements;
     nextBuffer = FrameBuffer(size);
     nextBuffer.clear();
+    system("cls");
 }
 
+
 void Renderizador::draw(){
-
-    FrameBuffer swapAux = nextBuffer;
-    nextBuffer.clear();
-    currentBuffer = swapAux;
-
+    std::cout << "\x1b[H"; 
     for(int i{}; i < size.x*size.y; i++){
-
         if(((i+1) % (int)size.x) != 0 ){
-
             std::cout << currentBuffer.at(i);            
         }
         else{
-
             std::cout << currentBuffer.at(i) << "\n";
-
         }
-
-    }
-    
+    }    
 }
 
 
-void Renderizador::draw(std::vector<GameElement*> &elements, Vector position){
+void Renderizador::draw(std::vector<GameElement*> &elements, Vector position, bool main){
 
     for(auto& element : elements){ 
-
         Vector elementPosition = element->getPosition();
         elementPosition.x += position.x;
         elementPosition.y += position.y;
         element->setPosition(elementPosition);
         element->example(this);
         //this->draw(*elementgetDrawable(), elementPosition);
-
+    }
+    if(main){
+        swap();
+        draw(); 
+    }else{
+        nextBuffer.draw(0, 'U');
     }
 };
+
+void Renderizador::swap(){
+    FrameBuffer swapAux = nextBuffer;
+    nextBuffer = currentBuffer;
+    currentBuffer = swapAux;
+    nextBuffer.clear();
+}
 
 
 void Renderizador::draw(std::string message, Vector position){

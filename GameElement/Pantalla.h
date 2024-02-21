@@ -15,11 +15,14 @@ public:
     std::vector<GameElement*> getDrawable();
 
     void example(Renderizador* renderizador) override {
-
-        renderizador->draw(elements,position);
-
-
+        renderizador->draw(elements,position,false);
     }    
+
+    void update(double deltaTime) override {
+        for(auto& element : elements){
+            element->update(deltaTime);
+        }
+    }
 
 };
 

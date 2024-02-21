@@ -6,12 +6,15 @@
 
 class dibujofeo : public Pantalla
 {
-private:
-    /* data */
+
+    pantallaFea a = pantallaFea();
+
 public:
     dibujofeo(){
+        this->elements.push_back(new pantallaFea()); 
+        this->elements.push_back(new pantallaFea());  
+        this->elements.push_back(new movingLetters());
         this->elements.push_back(new Label("Hello World", Vector(0,0)));
         this->elements.push_back(new GameObject(Sprite(3,3,"### ####### "), Vector(2,2)));
-        this->elements.push_back(new pantallaFea());
     }
 };

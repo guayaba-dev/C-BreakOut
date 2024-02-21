@@ -5,6 +5,9 @@ FrameBuffer::FrameBuffer(Vector size){
 }
 
 void FrameBuffer::draw(int position, char pixel){
+    if(position > size.x*size.y){
+        return;
+    }
     this->pixels[position] = pixel;
 }
 
@@ -14,5 +17,5 @@ void FrameBuffer::clear(){
 }
 
 char FrameBuffer::at(int position){
-    return this->pixels.at(position);
+    return pixels[position];
 }

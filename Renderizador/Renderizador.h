@@ -12,13 +12,14 @@ class Renderizador
 {
     FrameBuffer currentBuffer;
     FrameBuffer nextBuffer;
-
+    std::vector<GameElement*> elements;
     Vector size;
 
     public: 
-        Renderizador(Vector size);
-        void draw(std::vector<GameElement*>&elements, Vector position);
+        Renderizador(Vector size, std::vector<GameElement*> elements);
+        void draw(std::vector<GameElement*>&elements, Vector position, bool main);
         void draw(Sprite sprite, Vector position);
         void draw(std::string message, Vector position);  
         void draw(); 
+        void swap();
         };

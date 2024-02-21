@@ -5,13 +5,20 @@
 
 class GameManager{
 
-
-    float deltaTime{};
-    Renderizador renderizador{Renderizador(Vector(25,20))};
     Pantalla pantalla = Pantalla();
+    Renderizador renderizador{Renderizador(Vector(25,20), pantalla.elements)};
     //Controler controler
 
-    void update(float deltaTime);
+    void gameLoop(){
+        double deltaTime{};
+        while(1)
+        {
+            //controler.getInput();
+            pantalla.update(deltaTime);
+            renderizador.draw(pantalla.elements, Vector(0,0), true);
+        }
+        
+    }
 
     public:
         int static points;
@@ -20,8 +27,8 @@ class GameManager{
            this->pantalla = pantalla; 
         }
         void init(){
-            renderizador.draw(pantalla.elements, Vector(0,0));
-            renderizador.draw();
+            renderizador.draw(pantalla.elements, Vector(0,0),true);
+            gameLoop();
         };
 
 

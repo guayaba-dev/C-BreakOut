@@ -14,10 +14,9 @@ class GameElement
         Vector position;
 
     public:
-        
-        //GameElement();
+         
         //GameElement(Vector position);
-        //virtual void update();
+        virtual void update(double deltaTime){};
         //virtual void destroy();
         Vector getPosition(){return this->position;};
         void setPosition(Vector position){this->position = position;};

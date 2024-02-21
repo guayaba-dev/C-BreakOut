@@ -9,8 +9,8 @@ public:
 
     std::string message{""};
 
-    Label();
-    Label(std::string message);
+    Label(){};
+    Label(std::string message){};
     Label(std::string message, Vector position){
 
         this->message = message;
@@ -19,10 +19,10 @@ public:
     std::string getDrawable();
 
     void example(Renderizador* renderizador) override {
-
-
         renderizador->draw(message,position);
     };
+
+    virtual void update(double deltaTime) override{};
 
 };
 
