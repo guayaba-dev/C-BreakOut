@@ -7,5 +7,7 @@ struct Vector
 
     Vector() = default;
     Vector(float x, float y);    
-
+    Vector operator+(Vector other);
+    Vector operator-(Vector other);
 };
+

@@ -26,13 +26,9 @@ void Renderizador::draw(std::vector<GameElement*> &elements, Vector position, bo
 
     for(auto& element : elements){ 
         Vector elementPosition = element->getPosition();
-        elementPosition.x += position.x;
-        elementPosition.y += position.y;
-        element->setPosition(elementPosition);
+        element->setPosition(elementPosition + position);
         element->example(this);
-        elementPosition.x -= position.x;
-        elementPosition.y -= position.y;
-        element->setPosition(elementPosition);
+        element->setPosition(elementPosition - position);
         //this->draw(*elementgetDrawable(), elementPosition);
     }
     if(main){
