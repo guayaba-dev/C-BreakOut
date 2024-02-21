@@ -30,6 +30,9 @@ void Renderizador::draw(std::vector<GameElement*> &elements, Vector position, bo
         elementPosition.y += position.y;
         element->setPosition(elementPosition);
         element->example(this);
+        elementPosition.x -= position.x;
+        elementPosition.y -= position.y;
+        element->setPosition(elementPosition);
         //this->draw(*elementgetDrawable(), elementPosition);
     }
     if(main){
