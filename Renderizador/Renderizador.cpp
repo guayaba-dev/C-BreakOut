@@ -1,5 +1,6 @@
 #include "Renderizador.h"
 
+
 Renderizador::Renderizador(Vector size, std::vector<GameElement*> elements){
     this->size = size;
     this->elements = elements;
@@ -8,6 +9,14 @@ Renderizador::Renderizador(Vector size, std::vector<GameElement*> elements){
     system("cls");
 }
 
+void Renderizador::setElements(std::vector<GameElement*>&elements){
+    this->elements = elements;
+}
+
+
+void Renderizador::render(){
+    this->draw(elements,Vector(0,0),true);
+}
 
 void Renderizador::draw(){
     std::cout << "\x1b[H"; 
@@ -27,7 +36,7 @@ void Renderizador::draw(std::vector<GameElement*> &elements, Vector position, bo
     for(auto& element : elements){ 
         Vector elementPosition = element->getPosition();
         element->setPosition(elementPosition + position);
-        element->example(this);
+        element->render(this);
         element->setPosition(elementPosition - position);
         //this->draw(*elementgetDrawable(), elementPosition);
     }
@@ -109,7 +118,7 @@ void Renderizador::draw(Sprite sprite, Vector position){
 };
 
 
-    void GameElement::example(Renderizador* renderizador){
+    void GameElement::render(Renderizador* renderizador){
 
         renderizador->draw(0, Vector(0,0));
         std::cout << "soy un element" << "\n";

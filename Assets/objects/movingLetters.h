@@ -3,7 +3,7 @@
 class movingLetters : public Label
 {
 public:
-    movingLetters(/* args */){
+    movingLetters(){
         this->message = "Hola Mundo";
         this->position = Vector(0,0);
     }

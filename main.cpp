@@ -5,6 +5,8 @@
 
 int main(){
 
+    std::cout << "\e[?25l";
+
     GameManager engine = GameManager(dibujofeo());
 
     engine.init();

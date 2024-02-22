@@ -17,9 +17,11 @@ class Renderizador
 
     public: 
         Renderizador(Vector size, std::vector<GameElement*> elements);
+        void setElements(std::vector<GameElement*>&elements);
         void draw(std::vector<GameElement*>&elements, Vector position, bool main);
         void draw(Sprite sprite, Vector position);
         void draw(std::string message, Vector position);  
         void draw(); 
         void swap();
+        void render();
         };

@@ -15,17 +15,10 @@ class GameElement
 
     public:
          
-        //GameElement(Vector position);
-        virtual void update(double deltaTime){};
-        //virtual void destroy();
+        virtual void update(double deltaTime){};     
         Vector getPosition(){return this->position;};
-        void setPosition(Vector position){this->position = position;};
-        template <class T >
-        T getDrawable();
-        int getDrawable(){return 0;};
-        
-        virtual void example(Renderizador* renderizador);
-
+        void setPosition(Vector position){this->position = position;}
+        virtual void render(Renderizador* renderizador);
 };
 
 
