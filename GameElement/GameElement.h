@@ -1,26 +1,25 @@
 #pragma once
-#include "../tools/Vector.h"
+#include <iostream>
+#include <string>
+#include "../Tools/Vector.h"
+#include "../Renderizador/Renderizador.h"
+
+class Renderizador;
 
 class GameElement
 {
 
-    public:
-        
-        int id;
+    protected:    
+        int static id;
         Vector position;
 
-        GameElement();
-        void update();
-        void destroy();
-
+    public:
+         
+        virtual void update(double deltaTime){};     
+        Vector getPosition(){return this->position;};
+        void setPosition(Vector position){this->position = position;}
+        virtual void render(Renderizador* renderizador);
 };
-
-
-GameElement::GameElement(){
-
-}
-
-
 
 
 

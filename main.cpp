@@ -1,13 +1,15 @@
 #include <iostream>
 #include "Tools/Vector.h"
+#include "GameManager/GameManager.h"
+#include "Assets/pantallas/dibujofeo.h"
 
 int main(){
 
-    Vector nuevoVector = Vector(5,7);
+    std::cout << "\e[?25l";
 
-    std::cout << nuevoVector.x << std::endl;
+    GameManager engine = GameManager(dibujofeo());
 
-    std::cout << nuevoVector.y << std::endl;
+    engine.init();
 
     return 0;
 }

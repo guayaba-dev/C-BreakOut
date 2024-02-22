@@ -3,15 +3,15 @@
 #include <vector>
 
 
-class Pantalla
+class Pantalla : public GameElement
 {
 
 public:
-
-    std::vector<GameElement> elements{};
-
-    Pantalla();
-
+    Pantalla()=default;
+    std::vector<GameElement*> elements{};
+    std::vector<GameElement*> getDrawable();
+    void render(Renderizador* renderizador) override;    
+    void update(double deltaTime) override;
 };
 
 

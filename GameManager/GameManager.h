@@ -1,23 +1,18 @@
 #pragma once
-#include "../Rederizador/Renderizador.h"
+#include "../Renderizador/Renderizador.h"
+#include "../GameElement/Pantalla.h"
 #include "../Controler/Controler.h"
 
 class GameManager{
 
-
-    float deltaTime{};
-    Renderizador renderizador{Renderizador()};
-    //Pantalla pantalla
+    Pantalla pantalla = Pantalla();
+    Renderizador renderizador{Renderizador(Vector(25,20), pantalla.elements)};
     //Controler controler
-
-    void update(float deltaTime);
-    void init();
+    void gameLoop();
 
     public:
         int static points;
-
-
-
-
-
+        GameManager()=default;
+        GameManager(Pantalla pantalla);
+        void init();
 };
